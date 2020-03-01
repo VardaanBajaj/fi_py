@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load recommended %}
+{% block script %}
+
+<script>
+
+  $(document).ready(function(){
+    loadPostData("post-container");
+  });
+</script>
+
+{% endblock script %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-sm-3">
+      <h1>{{ request.user }}</h1> <br/><hr/>
+      <p class='lead'> Recommended Users </p>
+      {% recommended request.user %}
+    </div>
+    <div class="col-sm-9">
+
+      {% if not request.GET.q %}
+        <div class="">
+          {% include "posts/form.html" with form=create_form form_class='post-form' action_url=create_url btn_title='Post' %}
+        </div>  <hr/>
+      {% endif %}
+
+      <div id="post-container" data-url="/api/post/">
+
+      </div>
+
+      <a href='#' id='loadmore'>Older Posts</a>
+    </div>
+  </div>
+{% endblock content %}

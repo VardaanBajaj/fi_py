@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'home' %}">Fi Py</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    {% if request.user.is_authenticated %}
+    {% include "posts/search_form.html" %}
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{request.user.profile.get_absolute_url}}">Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+        </div>
+      </li>
+    </ul>
+
+    {% else %}
+    <ul class="navbar-nav mr-auto">
+      <li><a class="navbar-brand" href="{% url 'login' %}">Login</a>
+      <li><a class="navbar-brand" href="{% url 'register' %}">Register</a>
+    </ul>
+    {% endif %}
+  </div>
+</nav>

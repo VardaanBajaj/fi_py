@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block script %}
+
+<script>
+
+  $(document).ready(function(){
+    loadPostData("post-container", {{object.id}});
+  });
+</script>
+
+{% endblock script %}
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-3">
+    <h1>{{object.user}}</h1>
+  </div>
+
+  <div class="col-sm-9">
+    <div id="post-container">
+
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

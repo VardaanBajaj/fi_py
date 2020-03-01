@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block script %}
+
+<script>
+
+  $(document).ready(function(){
+    loadPostData("post-container");
+  });
+</script>
+
+{% endblock script %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-sm-9">
+      {% if request.GET.q %}
+        <p class='lead'>Results for {{request.GET.q}} </p>
+      <hr/>
+      {% endif %}
+    </div>
+    <div class="col-sm-8 col-sm-offset-2" >
+      <h1> Posts </h1>
+      <hr />
+      <div id="post-container" data-url="/api/tags/{{ obj.tag }}">
+
+      </div>
+
+      <a href='#' id='loadmore'>Older Posts</a>
+    </div>
+    
+  </div>
+{% endblock content %}

@@ -1,0 +1,5 @@
+
+<form id='navbar-search-form' class="form-inline my-2 my-lg-0"method="GET" action='{% url "search" %}'>
+  <input type='text' name='q' placeholder="Search" value="{{ request.GET.q }}" />
+  <input type='submit' value='Search'/>
+</form>

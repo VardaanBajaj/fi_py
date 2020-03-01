@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block title %}Create Post | {{block.super}} {% endblock title %}
+
+{% block content %}
+ {% include "posts/form.html" with form=form btn_title='Post' %}
+{% endblock content %}
